@@ -88,3 +88,13 @@
 > Sep 09 19:12:08 selinux nginx[3601]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok  
 > Sep 09 19:12:08 selinux nginx[3601]: nginx: configuration file /etc/nginx/nginx.conf test is successful  
 > Sep 09 19:12:08 selinux systemd[1]: Started The nginx HTTP and reverse proxy server.
+
+
+- NGINX запущен, страница открывается - удаляем порт из http_port_t, останавливаем сервис и переходим к третьему методу.
+
+- 1.3 Разрешаем работу на порту 4881 с помощью формирования и установки модуля SELinux.
+- 1.3.1 Пытаемся запустить сервис ещё раз и смотрим логи:
+  > [root@selinux ~]# grep nginx /var/log/audit/audit.log  
+  > type=AVC msg=audit(1694287338.793:1001): avc:  denied  { name_bind } for  pid=3788 comm="nginx" src=4881 scontext=system_u:system_r:httpd_t:s0 tcontext=system_u:object_r:unreserved_port_t:s0 tclass=tcp_socket permissive=0   
+  > type=SYSCALL msg=audit(1694287338.793:1001): arch=c000003e syscall=49 success=no exit=-13 a0=7 a1=55d8f36d88c8 a2=1c a3=7ffee3a20934 items=0 ppid=1 pid=3788 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="nginx" exe="/usr/sbin/nginx" subj=system_u:system_r:httpd_t:s0 key=(null)  
+  > type=SERVICE_START msg=audit(1694287338.793:1002): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=nginx comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=failed'  
