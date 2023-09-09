@@ -83,8 +83,8 @@
 >    CGroup: /system.slice/nginx.service  
 >            ├─3605 nginx: master process /usr/sbin/nginx  
 >            └─3607 nginx: worker process  
->   
-Sep 09 19:12:08 selinux systemd[1]: Starting The nginx HTTP and reverse proxy server...  
-Sep 09 19:12:08 selinux nginx[3601]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok  
-Sep 09 19:12:08 selinux nginx[3601]: nginx: configuration file /etc/nginx/nginx.conf test is successful  
-Sep 09 19:12:08 selinux systemd[1]: Started The nginx HTTP and reverse proxy server.
+>  
+> Sep 09 19:12:08 selinux systemd[1]: Starting The nginx HTTP and reverse proxy server...  
+> Sep 09 19:12:08 selinux nginx[3601]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok  
+> Sep 09 19:12:08 selinux nginx[3601]: nginx: configuration file /etc/nginx/nginx.conf test is successful  
+> Sep 09 19:12:08 selinux systemd[1]: Started The nginx HTTP and reverse proxy server.
