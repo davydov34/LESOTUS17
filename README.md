@@ -13,7 +13,9 @@
 > nginx: the configuration file /etc/nginx/nginx.conf syntax is ok  
 > nginx: configuration file /etc/nginx/nginx.conf test is successful
 
-- 1.1.3 Проверяем режи работы SELinux:
+- 1.1.3 Проверяем режиv работы SELinux:
 > [root@selinux ~]# getenforce  
 > Enforcing
 
+- 1.1.4 Анализируем лог audit.log при помощи audit2why:
+> 
