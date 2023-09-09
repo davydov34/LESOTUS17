@@ -62,3 +62,29 @@
 > pegasus_https_port_t           tcp      5989  
 
 - 1.2.2 Добавляем порт 4881 к типу http_port_t:
+> [root@selinux ~]# semanage port -a -t http_port_t -p tcp 4881  
+> [root@selinux ~]# semanage port -l | grep http  
+> http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010  
+> http_cache_port_t              udp      3130  
+> http_port_t                    tcp      4881, 80, 81, 443, 488, 8008, 8009, 8443, 9000  
+> pegasus_http_port_t            tcp      5988  
+> pegasus_https_port_t           tcp      5989
+
+- 1.2.3 Выполняем запуск NGINX:
+> [root@selinux ~]# systemctl start nginx  
+> [root@selinux ~]# systemctl status nginx  
+> ● nginx.service - The nginx HTTP and reverse proxy server  
+>    Loaded: loaded (/usr/lib/systemd/system/nginx.service; disabled; vendor preset: disabled)  
+   Active: active (running) since Sat 2023-09-09 19:12:08 UTC; 5s ago  
+>   Process: 3603 ExecStart=/usr/sbin/nginx (code=exited, status=0/SUCCESS)  
+>   Process: 3601 ExecStartPre=/usr/sbin/nginx -t (code=exited, status=0/SUCCESS)  
+>   Process: 3600 ExecStartPre=/usr/bin/rm -f /run/nginx.pid (code=exited, status=0/SUCCESS)  
+>  Main PID: 3605 (nginx)  
+>    CGroup: /system.slice/nginx.service  
+>            ├─3605 nginx: master process /usr/sbin/nginx  
+>            └─3607 nginx: worker process  
+>   
+Sep 09 19:12:08 selinux systemd[1]: Starting The nginx HTTP and reverse proxy server...  
+Sep 09 19:12:08 selinux nginx[3601]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok  
+Sep 09 19:12:08 selinux nginx[3601]: nginx: configuration file /etc/nginx/nginx.conf test is successful  
+Sep 09 19:12:08 selinux systemd[1]: Started The nginx HTTP and reverse proxy server.
