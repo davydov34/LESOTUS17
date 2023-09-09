@@ -105,3 +105,24 @@
 > To make this policy package active, execute:  
 >  
 > semodule -i nginx.pp
+
+- 1.3.3 Выполняем команду и запускаем NGINX
+> [root@selinux ~]# semodule -i nginx.pp  
+> [root@selinux ~]# systemctl start nginx  
+> [root@selinux ~]# systemctl status nginx.service  
+> ● nginx.service - The nginx HTTP and reverse proxy server  
+>    Loaded: loaded (/usr/lib/systemd/system/nginx.service; disabled; vendor preset: disabled)  
+>    Active: active (running) since Sat 2023-09-09 19:31:36 UTC; 10s ago  
+>   Process: 3954 ExecStart=/usr/sbin/nginx (code=exited, status=0/SUCCESS)  
+>   Process: 3952 ExecStartPre=/usr/sbin/nginx -t (code=exited, status=0/SUCCESS)  
+>   Process: 3951 ExecStartPre=/usr/bin/rm -f /run/nginx.pid (code=exited, status=0/SUCCESS)  
+>  Main PID: 3956 (nginx)  
+>    CGroup: /system.slice/nginx.service  
+>            ├─3956 nginx: master process /usr/sbin/nginx  
+>            └─3958 nginx: worker process  
+>  
+> Sep 09 19:31:36 selinux systemd[1]: Starting The nginx HTTP and reverse proxy server...  
+> Sep 09 19:31:36 selinux nginx[3952]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok  
+> Sep 09 19:31:36 selinux nginx[3952]: nginx: configuration file /etc/nginx/nginx.conf test is successful  
+> Sep 09 19:31:36 selinux systemd[1]: Started The nginx HTTP and reverse proxy server.
+
