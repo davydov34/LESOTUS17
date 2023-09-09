@@ -61,4 +61,4 @@
 > pegasus_http_port_t            tcp      5988  
 > pegasus_https_port_t           tcp      5989  
 
-  
+- 1.2.2 Добавляем порт 4881 к типу http_port_t:
