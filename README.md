@@ -3,7 +3,7 @@
 
 - 1.1.1 Проверяем состояние firewalld:
 > [vagrant@selinux ~]$ systemctl status firewalld.service
-> > ● firewalld.service - firewalld - dynamic firewall daemon
+> ● firewalld.service - firewalld - dynamic firewall daemon \n
 >   Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled; vendor preset: enabled)
 >    Active: inactive (dead)
 >      Docs: man:firewalld(1)
