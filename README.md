@@ -27,4 +27,4 @@
 > 	Allow nis to enabled  
 >  
 > 	Allow access by executing:  
-> 	#setsebool -P nis_enabled 1
+> 	**#setsebool -P nis_enabled 1**
