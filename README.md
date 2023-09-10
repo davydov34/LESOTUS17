@@ -178,5 +178,15 @@
 > /etc/rndc.*                                        regular file       system_u:object_r:named_conf_t:s0  
 > /var/named(/.*)?                                   all files          system_u:object_r:named_zone_t:s0 
 
+- 2.6 Меняем тип контекста безопасности для /etc/named на named_zone_t:
+> [root@ns01 ~]# chcon -R -t named_zone_t /etc/named  
+> [root@ns01 ~]# ls -alZ /etc/named  
+> drw-rwx---. root named system_u:object_r:named_zone_t:s0 .  
+> drwxr-xr-x. root root  system_u:object_r:etc_t:s0       ..  
+> drw-rwx---. root named unconfined_u:object_r:named_zone_t:s0 dynamic  
+> -rw-rw----. root named system_u:object_r:named_zone_t:s0 named.50.168.192.rev  
+> -rw-rw----. root named system_u:object_r:named_zone_t:s0 named.dns.lab  
+> -rw-rw----. root named system_u:object_r:named_zone_t:s0 named.dns.lab.view1  
+> -rw-rw----. root named system_u:object_r:named_zone_t:s0 named.newdns.lab
 
 
