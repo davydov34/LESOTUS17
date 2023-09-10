@@ -143,4 +143,10 @@
 > update add www.ddns.lab. 60 A 192.168.50.15  
 > send  
 > update failed: SERVFAIL
-> 
+ 
+- 2.2 Выполняем анализ лога утилитой audit2why:
+> [root@client ~]# cat /var/log/audit/audit.log | audit2why  
+> [root@client ~]#
+
+В журнале ошибок нет...
+
