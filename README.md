@@ -148,5 +148,19 @@
 > [root@client ~]# cat /var/log/audit/audit.log | audit2why  
 > [root@client ~]#
 
-В журнале ошибок нет...
+В журнале клиентской машины ошибок нет... Выполняем ту же операцию на стороне сервера...
+- 2.3 Анализируем лог на сервере:
+> Last login: Sun Sep 10 08:23:05 2023 from 10.0.2.2  
+> [vagrant@ns01 ~]$ sudo -i  
+> [root@ns01 ~]# cat /var/log/audit/audit.log | audit2  
+> audit2allow  audit2why  
+> [root@ns01 ~]# cat /var/log/audit/audit.log | audit2why  
+> type=AVC msg=audit(1694333762.168:759): avc:  denied  { create } for  pid=703 comm="isc-worker0000" name="named.ddns.lab.view1.jnl" >scontext=system_u:system_r:named_t:s0 tcontext=system_u:object_r:etc_t:s0 tclass=file permissive=0  
+>  
+>    Was caused by:  
+>            Missing type enforcement (TE) allow rule.  
+>  
+>   		    You can use audit2allow to generate a loadable module to allow this access.  
+
+
 
