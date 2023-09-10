@@ -189,4 +189,42 @@
 > -rw-rw----. root named system_u:object_r:named_zone_t:s0 named.dns.lab.view1  
 > -rw-rw----. root named system_u:object_r:named_zone_t:s0 named.newdns.lab
 
+- 2.7 Переходим на клиента и пробуем внести изменения:
+> [root@client ~]# nsupdate -k /etc/named.zonetransfer.key  
+> server 192.168.50.10  
+> zone ddns.lab  
+> update add www.ddns.lab. 60 A 192.168.50.15  
+> send  
+> quit
+
+2.8 Выполняем запрос к DNS серверу:
+> [root@client ~]# dig @192.168.50.10 www.ddns.lab  
+>  
+> ; <<>> DiG 9.11.4-P2-RedHat-9.11.4-26.P2.el7_9.14 <<>> @192.168.50.10 www.ddns.lab  
+> ; (1 server found)  
+> ;; global options: +cmd  
+> ;; Got answer:  
+> ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 44310  
+> ;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 2  
+>  
+> ;; OPT PSEUDOSECTION:  
+> ; EDNS: version: 0, flags:; udp: 4096  
+> ;; QUESTION SECTION:  
+;www.ddns.lab.			IN	A  
+>  
+> ;; ANSWER SECTION:  
+> www.ddns.lab.		60	IN	A	192.168.50.15  
+>  
+> ;; AUTHORITY SECTION:  
+> ddns.lab.		3600	IN	NS	ns01.dns.lab.  
+>  
+> ;; ADDITIONAL SECTION:  
+> ns01.dns.lab.		3600	IN	A	192.168.50.10  
+>   
+> ;; Query time: 0 msec  
+> ;; SERVER: 192.168.50.10#53(192.168.50.10)  
+> ;; WHEN: Sun Sep 10 08:56:27 UTC 2023  
+> ;; MSG SIZE  rcvd: 96  
+
+
 
