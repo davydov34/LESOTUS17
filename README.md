@@ -226,5 +226,38 @@
 > ;; WHEN: Sun Sep 10 08:56:27 UTC 2023  
 > ;; MSG SIZE  rcvd: 96  
 
+- 2.9 Перезагружаем хосты, чтобы убедиться в том, что настройки сохранились после перезапуска системы:
+> Last login: Sun Sep 10 08:23:23 2023 from 10.0.2.2  
+> [vagrant@ns01 ~]$ uptime  
+>  09:04:38 up 3 min,  1 user,  load average: 0.00, 0.00, 0.00
 
+>[vagrant@client ~]$ uptime  
+> 09:05:35 up 4 min,  1 user,  load average: 0.00, 0.00, 0.00  
+>[vagrant@client ~]$ dig @192.168.50.10 www.ddns.lab  
+>  
+>; <<>> DiG 9.11.4-P2-RedHat-9.11.4-26.P2.el7_9.14 <<>> @192.168.50.10 www.ddns.lab  
+>; (1 server found)  
+>;; global options: +cmd  
+>;; Got answer:  
+>;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 43940  
+>;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 2  
+>  
+>;; OPT PSEUDOSECTION:  
+>; EDNS: version: 0, flags:; udp: 4096  
+>;; QUESTION SECTION:  
+>;www.ddns.lab.			IN	A  
+>  
+>;; ANSWER SECTION:  
+>www.ddns.lab.		60	IN	A	192.168.50.15  
+>  
+>;; AUTHORITY SECTION:  
+>ddns.lab.		3600	IN	NS	ns01.dns.lab.  
+>  
+>;; ADDITIONAL SECTION:  
+>ns01.dns.lab.		3600	IN	A	192.168.50.10  
+>  
+>;; Query time: 1 msec  
+>;; SERVER: 192.168.50.10#53(192.168.50.10)  
+>;; WHEN: Sun Sep 10 09:06:04 UTC 2023  
+>;; MSG SIZE  rcvd: 96  
 
