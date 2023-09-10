@@ -172,4 +172,11 @@
 > -rw-rw----. root named system_u:object_r:etc_t:s0       named.dns.lab.view1  
 > -rw-rw----. root named system_u:object_r:etc_t:s0       named.newdns.lab
 
+Видим контекст безопасности etc_t.
+- 2.5 Смотрим, в каком каталоге долдны лежать файлы:
+> [root@ns01 ~]# semanage fcontext -l | grep named | head -n 2
+> /etc/rndc.*                                        regular file       system_u:object_r:named_conf_t:s0
+> /var/named(/.*)?                                   all files          system_u:object_r:named_zone_t:s0 
+
+
 
