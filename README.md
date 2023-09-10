@@ -162,5 +162,14 @@
 >  
 >   		    You can use audit2allow to generate a loadable module to allow this access.  
 
+- 2.4 Посмотрим на контекст безопасности в каталоге /etc/named/:
+> [root@ns01 ~]# ls -alZ /etc/named  
+> drw-rwx---. root named system_u:object_r:etc_t:s0       .  
+> drwxr-xr-x. root root  system_u:object_r:etc_t:s0       ..  
+> drw-rwx---. root named unconfined_u:object_r:etc_t:s0   dynamic  
+> -rw-rw----. root named system_u:object_r:etc_t:s0       named.50.168.192.rev  
+> -rw-rw----. root named system_u:object_r:etc_t:s0       named.dns.lab  
+> -rw-rw----. root named system_u:object_r:etc_t:s0       named.dns.lab.view1  
+> -rw-rw----. root named system_u:object_r:etc_t:s0       named.newdns.lab
 
 
