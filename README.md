@@ -134,3 +134,13 @@
 > [root@selinux ~]# semodule -r nginx
 > libsemanage.semanage_direct_remove_key: Removing last nginx module (no other nginx module exists at another priority).
 
+## 2. Обеспечение работоспособности при вклюенном SELinux.
+
+- 2.1 Пытаемся внести изменения в зону DNS:
+> [vagrant@client ~]$ nsupdate -k /etc/named.zonetransfer.key  
+> server 192.168.50.10  
+> zone ddns.lab  
+> update add www.ddns.lab. 60 A 192.168.50.15  
+> send  
+> update failed: SERVFAIL
+> 
